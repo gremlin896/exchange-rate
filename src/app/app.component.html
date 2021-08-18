@@ -1,0 +1,3 @@
+<app-exchange-rate-form (currencySelected)="service.setSelectedCurrency($event)"></app-exchange-rate-form>
+
+<app-exchange-rate-table [data]="(service.data$ | async)!"></app-exchange-rate-table>
