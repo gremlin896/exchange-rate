@@ -3,7 +3,7 @@ import { createComponentFactory } from '@ngneat/spectator';
 import { MatTableModule } from '@angular/material/table';
 import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
 import { MatTableHarness } from '@angular/material/table/testing';
-import { ExchangeRateDataModel } from '../../models';
+import { ExchangeRateTableData } from '../../models';
 
 describe('ExchangeRateTableComponent', () => {
   const createComponent = createComponentFactory({
@@ -19,7 +19,7 @@ describe('ExchangeRateTableComponent', () => {
 
   it('should display input data', async () => {
     const { harnessLoader, spectator } = init();
-    const mockData: ExchangeRateDataModel[] = [
+    const mockData: ExchangeRateTableData[] = [
       { name: 'AED', value: 12.4 },
       { name: 'ERN', value: 5435.12 },
     ];

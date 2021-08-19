@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { ExchangeRateDataModel } from '../../models';
+import { ExchangeRateTableData } from '../../models';
 
 @Component({
   selector: 'app-exchange-rate-table',
@@ -21,7 +21,7 @@ import { ExchangeRateDataModel } from '../../models';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ExchangeRateTableComponent {
-  @Input() data: ExchangeRateDataModel[] = [];
+  @Input() data: ExchangeRateTableData[] = [];
 
   displayedColumns = ['name', 'value'];
 }

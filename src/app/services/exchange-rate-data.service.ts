@@ -1,20 +1,20 @@
 import { Injectable } from '@angular/core';
 import {
   Currency,
-  ExchangeRateDataModel,
-  ExchangeRateResponseModel,
+  ExchangeRateTableData,
+  ExchangeRateResponse,
   ExchangeRateResponseRates,
 } from '../models';
 import { HttpClient } from '@angular/common/http';
-import { EXCHANGE_RATE_ENDPOINT } from '../constants';
 import { BehaviorSubject } from 'rxjs';
 import { map, pluck, tap } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ExchangeRateDataService {
-  private dataSubject = new BehaviorSubject<ExchangeRateDataModel[]>([]);
+  private dataSubject = new BehaviorSubject<ExchangeRateTableData[]>([]);
   data$ = this.dataSubject.asObservable();
 
   constructor(private http: HttpClient) {}
@@ -27,7 +27,7 @@ export class ExchangeRateDataService {
 
   private getExchangeRatesForCurrency(baseCurrency: Currency) {
     return this.http
-      .get<ExchangeRateResponseModel>(EXCHANGE_RATE_ENDPOINT + baseCurrency)
+      .get<ExchangeRateResponse>(environment.endpoint + baseCurrency)
       .pipe(
         pluck('rates'),
         map((rates) => this.transformExchangeRatesData(rates))
@@ -36,7 +36,7 @@ export class ExchangeRateDataService {
 
   private transformExchangeRatesData(
     data: ExchangeRateResponseRates
-  ): ExchangeRateDataModel[] {
+  ): ExchangeRateTableData[] {
     return (Object.keys(data) as Currency[]).map((key) => ({
       name: key as Currency,
       value: data[key as Currency],

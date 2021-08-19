@@ -1,6 +1,6 @@
 import { Currency } from './currency.model';
 
-export interface ExchangeRateResponseModel {
+export interface ExchangeRateResponse {
   // Omitted irrelevant properties for simplicity
   base: Currency;
   rates: ExchangeRateResponseRates;

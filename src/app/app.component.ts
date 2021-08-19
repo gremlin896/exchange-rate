@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ExchangeRateDataService } from './services/exchange-rate-data.service';
+import { ExchangeRateDataService } from './services';
 
 // For simplicity, this component will act as the feature component
 // this would usually be a bad practice in a larger application.

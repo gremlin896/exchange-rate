@@ -1,6 +1,6 @@
 import { Currency } from './currency.model';
 
-export interface ExchangeRateDataModel {
+export interface ExchangeRateTableData {
   name: Currency;
   value: number;
 }
